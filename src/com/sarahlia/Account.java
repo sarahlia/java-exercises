@@ -9,10 +9,11 @@ public class Account {
     private String customerPhoneNumber;
 
     public Account() {
-        this("12345", 2.50, "Default name", "Default phone", "Defaul email"); //must be the first statement if we want to use 'this' this way. This is calling the constructor in line 16.
+        this("12345", 2.50, "Default name", "Default phone", "Defaul email"); //must be the first statement if we want to use 'this' this way. This is calling the constructor in line 17.
         System.out.println("Empty constructor called");
     }
 
+    //do all the initialization in this constructor.
     public Account(String number, double balance, String customerName, String customerPhoneNumber, String customerEmailAddress) {
         System.out.println("Account constructor with parameters called.");
         this.number = number;
@@ -20,6 +21,10 @@ public class Account {
         this.customerName = customerName;
         this.customerPhoneNumber = customerPhoneNumber;
         this.customerEmailAddress = customerEmailAddress;
+    }
+
+    public Account(String customerName, String customerEmailAddress, String customerPhoneNumber) {
+        this("99999", 100.55, customerName, customerEmailAddress, customerPhoneNumber);
     }
 
     public void deposit(double depositAmount) {

@@ -17,5 +17,9 @@ public class AccountApp {
         bubAccount.deposit(51.00);
         bubAccount.withdrawal(100.00);
 
+        Account timAccount = new Account("Tim Apple", "tim@mail.com", "3124690818");
+        timAccount.withdrawal(100.55);
+        System.out.printf("%s name: %s, balance: $%.2f \n", timAccount.getNumber(), timAccount.getCustomerName(), timAccount.getBalance());
+
     }
 }
