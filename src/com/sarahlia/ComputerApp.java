@@ -10,9 +10,8 @@ public class ComputerApp {
         Motherboard theMotherboard = new Motherboard("BD-200", "Asus", 4, 6, "v2.44");
 
         PC thePC = new PC(theCase, theMonitor, theMotherboard);
-        thePC.getMonitor().drawPixelAt(1500, 1200, "red");
-        thePC.getMotherboard().loadProgram("Windows 1.0");
-        thePC.getTheCase().pressPowerButton();
+        thePC.powerUp();
+        thePC.startApp();
     }
 
 }
