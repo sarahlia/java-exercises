@@ -22,12 +22,8 @@ public class Car extends Vehicle{
     }
 
     public void changeVelocity(int speed, int direction) {
-        move(speed, direction);
         System.out.println("Car.changeVelocity(): Velocity is " + speed + " and direction is " + direction);
+        move(speed, direction);
     }
 
-//    @Override
-//    public void stop() {
-//        super.stop();
-//    }
 }
