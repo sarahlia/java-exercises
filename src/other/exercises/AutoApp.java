@@ -40,6 +40,8 @@ class BMW extends Auto {
     public BMW() {
         super("unknown model BMW", 3);
     }
+
+    //no methods here.
 }
 
 class Ferrari extends Auto {
@@ -50,12 +52,12 @@ class Ferrari extends Auto {
 
     @Override
     public String startEngine() {
-        return "The shiny Ferrari is revving its engine";
+        return "The shiny " + getClass().getSimpleName() + " is revving its engine";
     }
 
     @Override
     public String accelerate() {
-        return "The Ferrari is going up to 5th gear";
+        return "The " + getClass().getSimpleName() + " is going up to 5th gear";
     }
 
     @Override
@@ -72,14 +74,15 @@ class Fiat extends Auto {
 
     @Override
     public String startEngine() {
-        return "The little but sleek Fiat Spider is starting its engine";
+        return "The little but sleek " + getClass().getSimpleName() + " is starting its engine";
     }
 
     @Override
     public String accelerate() {
-        return "The Fiat is speeding up";
+        return "The " + getClass().getSimpleName() + " is speeding up";
     }
 
+    @Override
     public void brake() {
         System.out.println("The Fiat Spider is coming to a halt then lowers its top.");
     }
@@ -89,17 +92,18 @@ public class AutoApp {
 
     public static void main(String[] args) {
 
-//        for(int i=1; i <= 3; i++) {
+            Auto auto = new Auto("standard", 8);
+            System.out.println(auto.startEngine());
+            System.out.println(auto.accelerate());
+            auto.brake();
+
+            //Polymorphism
             Auto ferrari = new Ferrari();
             Auto bmw = new BMW();
             Auto fiat = new Fiat();
             System.out.printf("Car #%d is %s and it has a %d cylinder engine. %s. %s. \n", 1, ferrari.getName(), ferrari.getCylinders(), ferrari.startEngine(), ferrari.accelerate());
-            System.out.printf("Car #%d is %s and it has a %d cylinder engine \n", 2, bmw.getName(), bmw.getCylinders());
-            bmw.startEngine();
-            System.out.printf("Car #%d is %s and it has a %d cylinder engine \n", 3, fiat.getName(), fiat.getCylinders());
-            fiat.startEngine();
-//        }
-
+            System.out.printf("Car #%d is %s and it has a %d cylinder engine. %s. %s. \n", 2, bmw.getName(), bmw.getCylinders(), bmw.startEngine(), bmw.accelerate());
+            System.out.printf("Car #%d is %s and it has a %d cylinder engine. %s. %s. \n", 3, fiat.getName(), fiat.getCylinders(), fiat.startEngine(), fiat.accelerate());
 
     }
 }
