@@ -63,7 +63,7 @@ public class Hamburger {
         this.addition4Price = price;
     }
 
-    public void grandTotal() {
+    public double grandTotal() {
 
         double hamburgerPrice = basePrice();
 
@@ -89,9 +89,12 @@ public class Hamburger {
             System.out.printf("Added %s for an additional $%.2f \n", addition4Name, addition4Price);
         }
 
-        System.out.printf("Your grand total is $%.2f \n", hamburgerPrice);
-//        return hamburgerPrice;
+        System.out.printf("Your total is $%.2f \n", hamburgerPrice);
+        return hamburgerPrice;
     }
 
+    public void burgerMessage() {
+        System.out.println("This is the generic Hamburger.\n");
+    }
 
 }
