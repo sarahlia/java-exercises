@@ -27,4 +27,9 @@ public class DeluxeBurger extends Hamburger {
     public void addAddition4(String name, double price) {
         System.out.println("***Cannot add additional items to a Deluxe Burger***");
     }
+
+    @Override
+    public void burgerMessage() {
+        System.out.println("This is the Deluxe Burger!");
+    }
 }
