@@ -6,12 +6,39 @@ import java.util.Scanner;
 public class ArrayE {
 
     private static Scanner scanner = new Scanner(System.in);
+    private static int[] baseData = new int[5];
 
     public static void main(String[] args) {
 
-        int[] myIntegers = getIntegers(5);
-        int[] sorted = sortIntegers(myIntegers);
-        printArray(sorted);
+//        int[] myIntegers = getIntegers(5);
+//        int[] sorted = sortIntegers(myIntegers);
+//        printArray(sorted);
+
+        System.out.println("Enter 5 integers: ");
+        getInput();
+        printArray(baseData);
+
+        resizeArray();
+        baseData[5] = 8;
+        baseData[6] = 9;
+        printArray(baseData);
+
+    }
+
+    private static void getInput() {
+        for(int i = 0; i < baseData.length; i++) {
+            baseData[i] = scanner.nextInt();
+        }
+    }
+
+    private static void resizeArray() {
+
+        int[] original = baseData;
+
+        baseData = new int[7];
+        for(int i = 0; i < original.length; i++) {
+            baseData[i] = original[i];
+        }
     }
 
     public static int[] getIntegers(int capacity) {
@@ -25,8 +52,9 @@ public class ArrayE {
 
     public static void printArray(int[] array) {
         for(int i = 0; i < array.length; i++) {
-            System.out.println("Element " + i + ", content: " + array[i]);
+            System.out.print(array[i] + " ");
         }
+        System.out.println(); //just an extra line
     }
 
     public static int[] sortIntegers(int[] array) { //method to sort integers in descending order.
