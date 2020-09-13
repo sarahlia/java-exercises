@@ -10,9 +10,12 @@ public class GroceryList {
         g.addGroceryItem("milk");
         g.addGroceryItem("banana");
         g.printGroceryList();
-
-        g.removeGroceryItem(0);
+//        g.removeGroceryItem(0);
+//        g.printGroceryList();
+        g.modifyGroceryItem(1, "cookies");
         g.printGroceryList();
+//        System.out.println("g.findItem(\"beer\") = " + g.findItem("beer"));
+
     }
 
     public void addGroceryItem(String item) {
@@ -34,5 +37,15 @@ public class GroceryList {
     public void removeGroceryItem(int position) {
         String theItem = groceryList.get(position);
         groceryList.remove(position);
+    }
+
+    public String findItem(String searchItem) {
+//        boolean exists = groceryList.contains(searchItem);
+        int position = groceryList.indexOf(searchItem);
+
+        if(position >= 0) {
+            return groceryList.get(position);
+        }
+        return null;
     }
 }
