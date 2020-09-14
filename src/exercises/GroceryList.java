@@ -47,6 +47,9 @@ public class GroceryList {
                     searchForItem();
                     break;
                 case 6:
+                    processArrayList();
+                    break;
+                case 7:
                     quit = true;
                     break;
             }
@@ -62,7 +65,8 @@ public class GroceryList {
         System.out.println("\t 3 - Modify an item in the list.");
         System.out.println("\t 4 - Remove an item from the list.");
         System.out.println("\t 5 - Search for an item in the list.");
-        System.out.println("\t 6 - Quit the application.");
+        System.out.println("\t 6 - Print the ArrayList.");
+        System.out.println("\t 7 - Quit the application.");
     }
 
     public static void addItem() {
@@ -71,26 +75,24 @@ public class GroceryList {
     }
 
     public static void modifyItem() {
-        System.out.print("Enter item number: ");
-        int itemNumber = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Enter replacement item: ");
+        System.out.print("Current item name: ");
+        String itemNumber = scanner.nextLine();
+        System.out.print("Enter new item: ");
         String newItem = scanner.nextLine();
-        gl.modifyGroceryItem(itemNumber-1, newItem );
+        gl.modifyGroceryItem(itemNumber, newItem );
     }
 
     public static void removeItem() {
-        System.out.print("Enter item number: ");
-        int itemNumber = scanner.nextInt();
-        scanner.nextLine();
-        gl.removeGroceryItem(itemNumber-1);
+        System.out.print("Enter item name: ");
+        String itemNumber = scanner.nextLine();
+        gl.removeGroceryItem(itemNumber);
     }
 
     public static void searchForItem() {
         System.out.print("Item to search for: ");
         String searchItem = scanner.nextLine();
-        if(gl.findItem(searchItem) != null) {
-            System.out.println("Found " + searchItem + " in the grocery list.");
+        if( gl.onFile(searchItem) ) {
+            System.out.println("Found " + searchItem);
         } else {
             System.out.println(searchItem + " is NOT found.");
         }
@@ -100,6 +102,10 @@ public class GroceryList {
         groceryList.add(item);
     }
 
+    public ArrayList<String> getGroceryList() {
+        return this.groceryList;
+    }
+
     public void printGroceryList() {
         System.out.println("You have " + groceryList.size() + " items in your grocery list.");
         for(int i = 0; i < groceryList.size(); i++) {
@@ -107,23 +113,53 @@ public class GroceryList {
         }
     }
 
-    public void modifyGroceryItem(int position, String newItem) {
+    public void modifyGroceryItem(String currentItem, String newItem) {
+        int position = findItem(currentItem);
+
+        if(position >= 0) {
+            modifyGroceryItem(position, newItem);
+        }
+    }
+
+    private void modifyGroceryItem(int position, String newItem) {
         groceryList.set(position, newItem);
         System.out.println("Grocery item " + (position+1) + " has been modified");
     }
 
-    public void removeGroceryItem(int position) {
-        String theItem = groceryList.get(position);
+    public void removeGroceryItem(String item) {
+        int position = findItem(item);
+
+        if(position >= 0) {
+            removeGroceryItem(position);
+        }
+    }
+
+    private void removeGroceryItem(int position) {
         groceryList.remove(position);
     }
 
-    public String findItem(String searchItem) {
-//        boolean exists = groceryList.contains(searchItem);
-        int position = groceryList.indexOf(searchItem);
+    private int findItem(String searchItem) {
+        return groceryList.indexOf(searchItem);
+    }
+
+    public boolean onFile(String searchItem) {
+        int position = findItem(searchItem);
 
         if(position >= 0) {
-            return groceryList.get(position);
+            return true;
         }
-        return null;
+
+        return false;
+    }
+
+    public static void processArrayList() {
+//        ArrayList<String> newArray = new ArrayList<>();
+//        newArray.addAll(gl.getGroceryList());//one way to copy an array list (in this case: gl)
+
+        ArrayList<String> nextArray = new ArrayList<>(gl.getGroceryList()); //another way to copy an array list
+
+//        String[] myArray = new String[gl.getGroceryList().size()];
+//        myArray = gl.getGroceryList().toArray(myArray); //yet another way to copy an array list.
+        System.out.println(nextArray);
     }
 }
