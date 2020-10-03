@@ -14,20 +14,19 @@ public class Main {
 //        theater.reserveSeat("A13");
 //
 
-        TheaterRevisited tr = new TheaterRevisited("Apollo", 20, 13);
+        TheaterRevisited tr = new TheaterRevisited("Apollo", 8, 12);
 //        tr.getSeats();
-        if(tr.reserveSeat("B03")) {
+        if(tr.reserveSeat("H11")) {
             System.out.println("Please pay");
         } else {
             System.out.println("Sorry, seat is taken.");
         }
 
-        if(tr.reserveSeat("B03")) {
+        if(tr.reserveSeat("H11")) {
             System.out.println("Please pay");
         } else {
             System.out.println("Sorry, seat is taken.");
         }
 
-        tr.reserveSeat("X10");
     }
 }

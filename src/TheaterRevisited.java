@@ -2,7 +2,7 @@ import java.util.*;
 
 public class TheaterRevisited {
     private final String theaterName;
-    private Collection<Seat> seats = new LinkedHashSet<>();
+    private Collection<Seat> seats = new ArrayList<>();
 
     public TheaterRevisited(String theaterName, int numRows, int seatsPerRow) {
         this.theaterName = theaterName;
@@ -23,6 +23,7 @@ public class TheaterRevisited {
     public boolean reserveSeat(String seatNumber) {
         Seat requestedSeat = null;
         for(Seat seat:seats) {
+            System.out.print(".");
             if(seat.getSeatNumber().equals(seatNumber)) {
                 requestedSeat = seat;
                 break;
