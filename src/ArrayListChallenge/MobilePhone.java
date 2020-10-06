@@ -1,4 +1,4 @@
-package ArrayListChallengePartOne;
+package ArrayListChallenge;
 
 import java.util.ArrayList;
 
@@ -65,10 +65,16 @@ public class MobilePhone {
 
     public String queryContact(Contact contact) {
         if(findContact(contact) >= 0) {
-            return contact.getName(); //if the result of method in line 37 is 0 or greater(found), return the contact's name.
+            return contact.getName(); //if the result of method in line 49 is 0 or greater(found), return the contact's name.
         }
         return null; //if not found, return null.
     }
 
+    public void printContacts() {
+        System.out.println("Contact List");
+        for(int i = 0; i < this.myContacts.size(); i++) {
+            System.out.println((i+1) + "." + this.myContacts.get(i).getName() + " -> " + this.myContacts.get(i).getPhoneNumber());
+        }
+    }
 
 }
