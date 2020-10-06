@@ -12,7 +12,7 @@ public class MobilePhone {
     }
 
     public boolean addNewContact(Contact contact) {
-        if(findContact(contact.getName()) >= 0) {
+        if(findContact(contact.getName().toLowerCase()) >= 0) {
             System.out.println("Contact already on file.");
             return false;
         }
@@ -56,7 +56,7 @@ public class MobilePhone {
     private int findContact(String contactName) {
         for(int i = 0; i < this.myContacts.size(); i++) {
             Contact contact = this.myContacts.get(i);
-            if(contact.getName().equals(contactName)) {
+            if(contact.getName().equalsIgnoreCase(contactName)) {
                 return i; //found. Return the position.
             }
         }
@@ -65,9 +65,19 @@ public class MobilePhone {
 
     public String queryContact(Contact contact) {
         if(findContact(contact) >= 0) {
-            return contact.getName(); //if the result of method in line 49 is 0 or greater(found), return the contact's name.
+            return contact.getName().toLowerCase(); //if the result of method in line 49 is 0 or greater(found), return the contact's name.
         }
         return null; //if not found, return null.
+    }
+
+    //Overloading
+    public Contact queryContact(String name) {
+        int position = findContact(name);
+        if(position >= 0) {
+            return this.myContacts.get(position);
+        }
+
+        return null;
     }
 
     public void printContacts() {
