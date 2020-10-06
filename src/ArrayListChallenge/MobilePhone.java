@@ -26,6 +26,9 @@ public class MobilePhone {
         if(foundPosition < 0 ) {
             System.out.println(oldContact.getName() + " was not found.");
             return false;
+        } else if( findContact(newContact.getName()) != -1 )  {
+            System.out.println("Contact with name " + newContact.getName() + " already exists. Update NOT succesful.");
+            return false;
         }
 
         this.myContacts.set(foundPosition, newContact);
@@ -65,7 +68,7 @@ public class MobilePhone {
 
     public String queryContact(Contact contact) {
         if(findContact(contact) >= 0) {
-            return contact.getName().toLowerCase(); //if the result of method in line 49 is 0 or greater(found), return the contact's name.
+            return contact.getName().toLowerCase(); //if the result of method in line 52 is 0 or greater(found), return the contact's name.
         }
         return null; //if not found, return null.
     }
