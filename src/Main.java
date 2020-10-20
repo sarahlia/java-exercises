@@ -16,17 +16,17 @@ public class Main {
 
         TheaterRevisited tr = new TheaterRevisited("Apollo", 8, 12);
 //        tr.getSeats();
-        if(tr.reserveSeat("H11")) {
+        if(tr.reserveSeat("D12")) {
             System.out.println("Please pay");
         } else {
             System.out.println("Sorry, seat is taken.");
         }
-
-        if(tr.reserveSeat("H11")) {
-            System.out.println("Please pay");
-        } else {
-            System.out.println("Sorry, seat is taken.");
-        }
+//
+//        if(tr.reserveSeat("H11")) {
+//            System.out.println("Please pay");
+//        } else {
+//            System.out.println("Sorry, seat is taken.");
+//        }
 
     }
 }

@@ -125,6 +125,4 @@ public class Main {
         System.out.println("6 - show menu");
         System.out.println("Select an option: ");
     }
-
-//    Commit from new computer
 }
