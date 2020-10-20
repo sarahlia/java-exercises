@@ -16,7 +16,7 @@ public class Main {
             System.out.println("Seat already reserved.");
         }
 
-        Collections.reverse(seatCopy);
+        Collections.shuffle(seatCopy);
         System.out.println("Printing seatCopy");
         printList(seatCopy);
 
@@ -27,6 +27,10 @@ public class Main {
         TheaterRevisited.Seat maxSeat = Collections.max(seatCopy);
         System.out.println("Min seat number is " + minSeat.getSeatNumber());
         System.out.println("Max seat number is " + maxSeat.getSeatNumber());
+
+        sortList(seatCopy);
+        System.out.println("Printing sorted seatCopy");
+        printList(seatCopy);
     }
 
     public static void printList(List<TheaterRevisited.Seat> list) {
@@ -35,5 +39,16 @@ public class Main {
         }
         System.out.println();
         System.out.println("===========================================================================");
+    }
+
+    public static void sortList(List<? extends TheaterRevisited.Seat> list) {
+        //nested for loop(slower):
+        for(int i=0; i<list.size()-1; i++) {
+            for(int j=i+1; j<list.size(); j++) { //the inner loop is checking fewer and fewer elements each time around.
+                if(list.get(i).compareTo(list.get(j)) > 0) {
+                    Collections.swap(list, i, j);
+                }
+            }
+        }
     }
 }
